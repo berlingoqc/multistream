@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_macos_webview/flutter_macos_webview.dart';
@@ -123,15 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CupertinoButton(
-              child: Text('Open as modal'),
-              onPressed: () => _onOpenPressed(PresentationStyle.modal),
-            ),
-            SizedBox(height: 16.0),
-            CupertinoButton(
-              child: Text('Open as sheet'),
-              onPressed: () => _onOpenPressed(PresentationStyle.sheet),
-            ),
+            Container(
+                child: WebView(
+              initialUrl: Uri.dataFromString(
+                      '<html><body><h1>FEF</h1></body></html>',
+                      mimeType: 'text/html')
+                  .toString(),
+              javascriptMode: JavascriptMode.unrestricted,
+            )),
           ],
         ),
       ),
